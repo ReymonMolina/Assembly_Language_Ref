@@ -1,0 +1,18 @@
+ORG 100
+Load One
+Store X
+
+Test, Subt Ten
+Skipcond 400 / if X-10 < 0 skip 
+Jump Loop
+Jump Done
+Loop, Load X
+OUTPUT
+Add One
+Store X
+Jump Test
+Done, Halt
+
+X, DEC 0
+Ten, DEC 11
+One, DEC 1

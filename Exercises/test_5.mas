@@ -1,0 +1,49 @@
+Input	/Enter the base
+Store	Base
+Subt	Decr
+Store	BaseCtr
+Store	BaseReset
+
+Input	/Enter the exponent
+Store	Exponent
+Subt	Decr
+Store	ExpCtr
+
+PreLoop,	Load	Base 
+Store	Result 
+
+AddLoop,	Load	Result 
+Add	Base 
+Store	Result
+
+Load	BaseCtr
+Subt	Decr
+Store	BaseCtr
+Skipcond	400
+Jump	AddLoop
+Jump	ExpTally
+
+ExpTally,	Load	Result
+Store	Base
+Load	BaseReset	
+Store	BaseCtr
+Load	ExpCtr
+Subt	Decr
+Store	ExpCtr
+Skipcond	400
+Jump	PreLoop
+Jump	Finish
+
+Finish,	Load	Result
+Output	Result
+Halt
+
+
+
+Base,	Dec	0
+BaseCtr,	Dec	0
+BaseReset,	Dec	0
+Exponent,	Dec	0
+ExpCtr,	Dec	0
+Decr,	Dec	1
+Result,	Dec	0

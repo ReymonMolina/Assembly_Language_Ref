@@ -1,0 +1,25 @@
+ORG 100
+Input a     /first factor
+Store a     /store the factor
+Input Ctr   /second factor used to control loop
+Store Ctr   /store second factor
+Load Ctr    /reload second factor to assure it is not zero
+Skipcond 800    /check if the second factor is greater than zero
+Jump End    /jump to end if the second factor is zero, product will be 0
+Loop,   Load Ctr    /reload second factor
+Subt One    /subtract the factor by 1 through each loop iteration
+Store Ctr   /store second factor
+Load Sum    /load the sum of addition operation; initially zero
+Add a       /add first factor to sum
+Store Sum   /store sum 
+Load Ctr    /load second factor to check its state
+Skipcond 400    /stop the loop if the second factor is equal to zero
+Jump Loop   /run the loop if the second factor is not equal to zero
+Load Sum    /load sum for output
+End, Output      /output final "product"
+Halt        /terminate program
+
+a,  Dec 0       /first factor
+Ctr,    Dec 0       /second factor
+Sum,    Dec 0       /sum of repeated addition
+One,    Dec 1  

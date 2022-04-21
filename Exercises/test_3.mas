@@ -1,0 +1,20 @@
+Load x
+Subt one
+Skipcond 800
+Jump Next
+Load x
+Add x
+Store y
+
+
+Clear
+Store x
+
+Load y
+Add one
+Store y
+
+Next, Halt
+x, dec 20
+y, dec 10
+one, dec 1
