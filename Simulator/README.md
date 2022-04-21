@@ -13,4 +13,4 @@ Be sure that your classpath is set correctly.
 * java MarieSim1  // Run the main simulator
 * java MarieDP1 // Run the datapath simulator
 
-## Note: This step is also necessary if there is a problem with your Windows file associations. 
+### Note: This step is also necessary if there is a problem with your Windows file associations. 
