@@ -1,0 +1,51 @@
+org 142
+input 
+store w
+store x
+
+loop, load x
+subt z
+store x
+load x
+skipcond 000
+jump loop
+load x
+
+add v
+skipcond 400
+jump odd
+skipcond 800
+jump even
+
+even, load w
+input y
+store y
+load y
+skipcond 800
+jump end
+
+loop2, load y
+subt one
+store y
+load sum
+add w
+store sum
+load y
+skipcond 400
+jump loop2
+load sum
+
+end, output 
+halt
+
+odd, load w
+add w
+output halt
+
+v, dec 2
+w, dec 0
+x, dec 0
+y, dec 0
+z, dec 2
+sum, dec 0
+one, dec 1

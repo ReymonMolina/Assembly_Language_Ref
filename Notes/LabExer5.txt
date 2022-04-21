@@ -1,0 +1,104 @@
+INPUT
+STORE W
+STORE X
+
+LOOP, LOAD X
+SUBT Z
+STORE X
+LOAD X
+SKIPCOND 000
+JUMP LOOP
+LOAD X
+
+ADD V
+SKIPCOND 400
+JUMP ODD
+SKIPCOND 800
+JUMP END
+
+LOOP2, LOAD Y
+SUBT ONE 
+STORE Y
+LOAD SUM
+ADD W
+STORE SUM
+ADD W 
+STORE SUM
+LOAD Y
+SKIPCOND 400
+JUMP LOOP2
+LOAD SUM
+
+END, OUTPUT
+HALT
+
+ODD, LOAD W
+ADD W
+OUTPUT
+HALT
+
+
+V, dec 2
+W, dec 0
+X, dec 0
+Y, dec 0
+Z, dec 2
+SUM, dec 0
+ONE, dec 1
+
+
+
+==================
+input 
+store w
+store x
+
+loop, load x
+subt z
+store x
+load x
+skipcond 000
+jump loop
+load x
+
+add v
+skipcond 400
+jump odd
+skipcond 800
+jump even
+
+even, load w
+input y
+store y
+load y
+skipcond 800
+jump end
+
+loop2, load y
+subt one
+store y
+load sum
+add w
+store sum
+add w
+store sum
+load y
+skipcond 400
+jump loop2
+load sum
+
+end, output
+halt
+
+odd, load w
+add w
+output
+halt
+
+v, dec 2
+w, dec 0
+x, dec 0
+y, dec 0
+z, dec 2
+sum, dec 0
+one, dec 1

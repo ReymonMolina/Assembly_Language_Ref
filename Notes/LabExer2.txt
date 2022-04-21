@@ -1,0 +1,99 @@
+Input
+store a
+input
+store b
+input 
+store c
+input 
+store d
+input
+store e
+input 
+store f
+
+add1, load s1
+add a
+store s1
+load count
+subt one
+store count
+skipcond 400
+jump add1
+load c
+add d
+store s2
+load e
+subt f
+store s3
+load s3
+skipcond 000
+jump add2
+halt
+
+add2, load s4
+add s1
+store s4
+load b
+subt one
+store b
+skipcond 400
+jump add2
+
+pow, load s2
+store count
+
+add3, load s5
+add s2
+store s5
+load count
+subt one
+store count
+skipcond 400
+jump add3
+load s3
+subt one
+store s3
+skipcond 400
+jump pow
+load four
+subt s5
+skipcond 000
+jump next1
+halt
+
+next1, load one
+store s1
+
+sub, load s1
+add one
+store s1
+load four
+subt s5
+store four
+skipcond 800
+jump next2
+jump sub
+
+next2, load s4
+add s1
+store z
+load z
+output
+halt
+
+a, dec 0
+b, dec 0
+c, dec 0
+d, dec 0
+e, dec 0
+f, dec 0
+s1, dec 0
+s2, dec 0
+s3, dec 0
+s4, dec 0
+s5, dec 0
+z, dec 0
+count, dec 3
+one, dec 1
+four, dec 4
+zero, dec 0

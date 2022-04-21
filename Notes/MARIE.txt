@@ -1,0 +1,304 @@
+MULTIPLICATION
+=========================
+ORG 100
+Input a     /first factor
+Store a     /store the factor
+Input Ctr   /second factor used to control loop
+Store Ctr   /store second factor
+Load Ctr    /reload second factor to assure it is not zero
+Skipcond 800    /check if the second factor is greater than zero
+Jump End    /jump to end if the second factor is zero, product will be 0
+Loop,   Load Ctr    /reload second factor
+Subt One    /subtract the factor by 1 through each loop iteration
+Store Ctr   /store second factor
+Load Sum    /load the sum of addition operation; initially zero
+Add a       /add first factor to sum
+Store Sum   /store sum 
+Load Ctr    /load second factor to check its state
+Skipcond 400    /stop the loop if the second factor is equal to zero
+Jump Loop   /run the loop if the second factor is not equal to zero
+Load Sum    /load sum for output
+End, Output      /output final "product"
+Halt        /terminate program
+
+a,  Dec 0       /first factor
+Ctr,    Dec 0       /second factor
+Sum,    Dec 0       /sum of repeated addition
+One,    Dec 1  
+
+
+ADDITION
+====================
+INPUT X
+STORE X
+INPUT Y
+STORE Y
+LOAD X
+ADD Y
+OUTPUT
+HALT
+
+X,DEC 0
+Y,DEC 0
+
+SUBTRACTION
+======================
+INPUT X
+STORE X
+INPUT Y
+STORE Y
+LOAD X
+SUBT Y
+OUTPUT
+HALT
+
+X,DEC 0
+Y,DEC 0
+
+
+if x>1 then 
+y= x+x;
+x=0;
+endif;
+y=y+1;
+=================
+Load x
+Subt one
+Skipcond 800
+Jump Next
+Load x
+Add x
+Store y
+
+
+Clear
+Store x
+
+Load y
+Add one
+Store y
+
+Next, Halt
+x, dec 20
+y, dec 10
+one, dec 1
+
+EXPLANATION:
+If, Load X / Load X
+Subt One / Subtract 1, store result in AC
+Skipcond 800 / If AC>0 (X>1), skip the next instruction
+Jump Endif / Jump to Endif if X is not greater than 1
+Then, Load X / Reload X so it can be doubled
+Add X / Double X
+Store Y / Y= X + X
+Load Zero / Move 0 into AC
+Store X / Set X to 0
+Endif, Load Y / Load Y into AC
+Add One / Add 1 to Y
+Store Y / Y = Y + 1
+Halt / Terminate program
+X, Dec ? / X has starting value, not given in problem
+Y, Dec ? / Y has starting value, not given in problem
+One, Dec 1 / Use as a constant
+Zero, Dec 0 / Use as a constant
+
+
+x=1; 
+while x ‹10 do 
+x=x+1; 
+endwhile;
+=============================
+
+ORG 100
+Load One
+Store X
+
+Test, Subt Ten
+Skipcond 400 / if X-10 < 0 skip 
+Jump Loop
+Jump Done
+Loop, Load X
+Add One
+Store X
+Jump Test
+Done, Halt
+
+X, DEC 0
+Ten, DEC 10
+One, DEC 1
+
+OR
+
+ORG 100
+Load One
+Store X
+
+Test, Subt Ten
+Skipcond 400 / if X-10 < 0 skip 
+Jump Loop
+Jump Done
+Loop, Load X
+OUTPUT
+Add One
+Store X
+Jump Test
+Done, Halt
+
+X, DEC 0
+Ten, DEC 11
+One, DEC 1
+
+SQUARE ROOT 2 numbers
+===========================
+Input	/Enter the base
+Store	Base
+Subt	Decr
+Store	BaseCtr
+Store	BaseReset
+
+Input	/Enter the exponent
+Store	Exponent
+Subt	Decr
+Store	ExpCtr
+
+PreLoop,	Load	Base 
+Store	Result 
+
+AddLoop,	Load	Result 
+Add	Base 
+Store	Result
+
+Load	BaseCtr
+Subt	Decr
+Store	BaseCtr
+Skipcond	400
+Jump	AddLoop
+Jump	ExpTally
+
+ExpTally,	Load	Result
+Store	Base
+Load	BaseReset	
+Store	BaseCtr
+Load	ExpCtr
+Subt	Decr
+Store	ExpCtr
+Skipcond	400
+Jump	PreLoop
+Jump	Finish
+
+Finish,	Load	Result
+Output	Result
+Halt
+
+
+
+Base,	Dec	0
+BaseCtr,	Dec	0
+BaseReset,	Dec	0
+Exponent,	Dec	0
+ExpCtr,	Dec	0
+Decr,	Dec	1
+Result,	Dec	0
+
+
+================================
+Sum = 0;
+for x = 1 to 10 do
+Sum = Sum + x;
+
+
+ORG 100
+LOAD one /Load Constant
+Store x /Initialize loop control variablex
+Loop, Load x /Load x
+Subt Ten /Compare x to 10
+SkipCond 000 /IF AC<0 (X IS LESS THAN 10). continue loop
+Jump Endloop /If x is not less than 10, terminate loop
+Load Sum
+Add x / Add x to Sum
+Store Sum /Store result in  sum
+Load x
+Add One /Increment x
+Store x
+Jump Loop
+
+Endloop, Load Sum
+Output /print sum
+Halt /terminate program
+
+Sum, Dec 0
+x, Dec 0 /Storage for x
+one, Dec 1 /The constant value 1
+Ten, Dec 10 /loop constant
+END
+
+=======================================
+MARIE PROGRAM USING LOOP THAT MULTIPLIES 2 POSITIVE
+NUMBERS BY USING repeated addition. For example, to multiple 3 x 6,
+the program would add 3 six times, or 3+3+3+3+3+3.
+
+
+ORG 100
+Load y /Load second value to be used as counter 
+Store ctr / Store as counter
+Loop, Load Sum /Load the sum
+ADd x /Add x to sum
+Store sum /Store result in sum
+Load ctr
+Subt one /Decrement counter
+Store ctr /Store counter
+SkipCond 400 /If AC = 0 (Ctr = 0), discontinue looping
+jump Loop /If AC not 0. continue looping 
+Endloop,Load Sum
+Output /Print product
+halt /Sum contains the product of x and y
+
+Ctr, Dec 0
+x, Dec ?
+y, Dec ?
+Sum, Dec 0
+One, Dec 1
+END
+
+===============================
+Write a MARIE subroutine to subtract 2 numbers. 
+Ans.
+Assume the formal parameters are x and y, and we are subtracting
+y from x. Assume that the actual parameters are  a and b. these values 
+could be input or declared in the program. This program tests the subroutine
+with two sets of values.
+
+ORG 100
+Load A /Load the 1st number
+Store X /Let x be the first parameter
+Load B /Load the 2nd number
+Store y /Let y be the 2nd parameter
+Jns Subr /Store return address, jump to procedure
+Load x /Load the result
+Output / output the first difference
+Load c
+Store X
+Load D
+Store y
+Jns Subr
+Load x
+output /output the second difference
+halt / terminate program
+
+
+X,Dec 0 /These could also be input
+Y,Dec 0
+A,Dec 8 /A and B could be input or declared
+B,Dec 4
+C,Dec 10
+D,Dec 2
+Subr, Hex 0 /Store return address here
+
+
+
+
+
+
+
+
+

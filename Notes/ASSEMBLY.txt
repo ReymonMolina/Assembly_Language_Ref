@@ -1,0 +1,79 @@
+LOAD X
+
+LOAD - OPERATIONAL CODE
+X - VARIABLE
+
+LOAD X
+
+X -> AC
+
+STORE X
+
+AC -> X
+
+ADD X 
+
+AC = AC + X
+
+SUBT X
+
+AC= AC - X
+
+INPUT
+
+USER INPUT -> AC
+
+OUTPUT
+
+AC -> result
+
+HALT (END)
+
+
+SKIPCOND 
+
+SKIP COND 000 AC < 0
+SKIP COND 400 AC = 0
+SKIP COND 800 AC > 0
+
+JUMP
+
+JUMP LOOP 
+
+LOOP:
+
+
+
+ORG 100 - ORIGIN
+- START 0
+
+ORG 200 - START ADDRESS 200
+
+MAS - MARIE ASSEMBLY FILE
+
+EXAMPLE:
+========================================
+1.)
+
+org 100
+
+load x			-> AC = BEAD
+add y			-> AC = BEAD + DAD
+output			-> BEAD 0DAD
+halt
+
+x, hex bead
+y, hex dad
+========================================
+2.)
+
+
+
+
+
+
+
+
+
+
+

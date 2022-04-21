@@ -1,0 +1,51 @@
+This code let you give the for parameters A B C and D it cals 
+the subroutine prod to make the multyplication of the first 2 stores t
+he in a temp variable, calls again the prod subroutine for the second 
+couple C an D an stores the in an other temp variable and finaly in adds the
+ 2 temp vars and output the result and stops:
+
+
+: org 100
+: input 
+: store x
+: input 
+: store y
+: JnS prod 
+: Load sum
+: store e
+: input 
+: store x
+: input 
+: store y
+: jns prod
+: load sum
+: store f
+: load e
+: add f
+: output
+: halt 
+: 
+: sum, dec 0
+: one, dec 1
+: ctr, dec 0
+: x, dec 0
+: y, dec 0
+: e, dec 0
+: f, dec 0
+: 
+: 
+: prod, hex 0
+: load y 
+: store ctr
+: clear
+: store sum 
+: Loop, Load sum
+: Add x
+: Store sum
+: Load ctr
+: Subt one
+: Store ctr
+: Skipcond 400
+: Jump Loop
+: load sum
+: JumpI prod
